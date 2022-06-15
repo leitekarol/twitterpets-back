@@ -23,13 +23,13 @@ export const createTweet = async (req, rep) => {
 
 
     export const getAllTweet = async (req, rep) => {
-      const { take, skip} = req.query;
-      let data={ orderBy: {id: "desc"}};
-      if (take) data.take = Number(take);
-      if (skip) data.skip = Number(skip);
+      // const { take, skip} = req.query;
+      // let data ={ orderBy: {id: "desc"}};
+      // if (take) data.take = Number(take);
+      // if (skip) data.skip = Number(skip);
 
         try {
-            const listweets = await prisma.tweet.findMany(data);
+            const listweets = await prisma.tweet.findMany();
             return rep.send(listweets).status(200);
         } catch (error) {
           rep.status(500).send({error: `Não possível listar os tweets.`});
